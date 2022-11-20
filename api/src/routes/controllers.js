@@ -1,20 +1,27 @@
 const axios = require('axios');
 const { Videogame, Genero, Op } = require('../db');
-const { API_KEY } = process.env;
 
 const getApiVideogames = async() => {
-  const apiURL = await axios.get(`https://api.rawg.io/api/games?key=2b6c32f9f7a749d9b9119138ef9f00a0`);
-  const infoExtraida = await apiURL.data.results.map((e) => {
-    return {
-      id: e.id,
-      name: e.name,
-      image: e.background_image,
-      released: e.released,
-      rating: e.rating,
-      genres: e.genres && e.genres.map((g) => g.name).join(', '),
-    };
-  });
-  return infoExtraida;
+  // const url = `https://api.rawg.io/api/games?key=2b6c32f9f7a749d9b9119138ef9f00a0`;
+  const searchedPages = 7;
+  let extraido = [];
+    for (let i = 1; i <= searchedPages; i++) {
+      const url = `https://api.rawg.io/api/games?key=2b6c32f9f7a749d9b9119138ef9f00a0&page=${i}`;
+      const apiURL = await axios.get(url);
+      const infoExtraida = await apiURL.data.results.map((e) => {
+        return {
+          id: e.id,
+          name: e.name,
+          image: e.background_image,
+          released: e.released,
+          rating: e.rating,
+          platforms: e.platforms? true : false, //ver para traer los nombres.
+          genres: e.genres && e.genres.map((g) => g.name).join(', '),
+        };
+      });
+      extraido = [...extraido, ...infoExtraida]
+    }
+  return extraido;
 }
 
 const getInfoDatabase = async() => {

@@ -38,10 +38,6 @@ module.exports = (sequelize) => {
     rating:{
         type: DataTypes.INTEGER
       },
-    platforms: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
   },
   { timestamps: false } //Utilidad
   );
