@@ -8,7 +8,7 @@ const router = Router();
 
 // Configurar los routers --> genero mis middlewares
 // Ejemplo: router.use('/auth', authRouter);
-router.use('/genre', genreRoute);
+router.use('/genres', genreRoute);
 router.use('/videogame', videogameRoute);
 router.use('/videogames', videogamesRoute);
 

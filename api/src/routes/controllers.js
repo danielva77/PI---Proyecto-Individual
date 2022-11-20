@@ -3,8 +3,8 @@ const { Videogame, Genero, Op } = require('../db');
 const { API_KEY } = process.env;
 
 const getApiVideogames = async() => {
-  const apiURL = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`).data.result
-  const infoExtraida = await apiURL.map((e) => {
+  const apiURL = await axios.get(`https://api.rawg.io/api/games?key=2b6c32f9f7a749d9b9119138ef9f00a0`);
+  const infoExtraida = await apiURL.data.results.map((e) => {
     return {
       id: e.id,
       name: e.name,
@@ -36,3 +36,25 @@ const getAllVideogames = async() => {
   const totalVideogames = apiInfo.concat(dbInfo);
   return totalVideogames;
 }
+
+const getAllGenres = async() => {
+  const genreApi = await axios.get(`https://api.rawg.io/api/genres?key=2b6c32f9f7a749d9b9119138ef9f00a0`);
+  const genres = await genreApi.data.results.map((e) => {return e.name});
+
+  genres.forEach(e =>{
+    Genero.findOrCreate({
+      where:{ name: e}
+    })
+  })
+
+  const allGenres = await Genero.findAll();
+  return allGenres;
+}
+
+
+module.exports = {
+	getApiVideogames,
+	getInfoDatabase,
+	getAllVideogames,
+  getAllGenres
+};
