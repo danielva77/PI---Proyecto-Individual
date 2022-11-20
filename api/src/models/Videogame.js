@@ -1,15 +1,4 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
-
-// [ ] Videojuego con las siguientes propiedades:
-// ID: * No puede ser un ID de un videojuego ya existente en la API rawg- LISTO
-// Nombre * LISTO
-// Descripción * LISTO
-// Fecha de lanzamiento LISTO
-// Rating LISTO
-// Plataformas *
-
 
 module.exports = (sequelize) => {
   // defino el modelo
@@ -33,7 +22,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
     image: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
         },
     rating:{
         type: DataTypes.INTEGER

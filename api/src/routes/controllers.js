@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Videogame, Genero, Op } = require('../db');
+const { Videogame, Genero, Plataform, Op } = require('../db');
 
 const getApiVideogames = async() => {
   // const url = `https://api.rawg.io/api/games?key=2b6c32f9f7a749d9b9119138ef9f00a0`;
@@ -15,7 +15,8 @@ const getApiVideogames = async() => {
           image: e.background_image,
           released: e.released,
           rating: e.rating,
-          platforms: e.platforms? true : false, //ver para traer los nombres.
+          // platforms: e.platforms.map((p) => p.platform.name).join(', '),
+          platforms: e.platforms.map((p) => p.platform.name), //array de plataformas
           genres: e.genres && e.genres.map((g) => g.name).join(', '),
         };
       });
@@ -46,7 +47,7 @@ const getAllVideogames = async() => {
 
 const getAllGenres = async() => {
   const genreApi = await axios.get(`https://api.rawg.io/api/genres?key=2b6c32f9f7a749d9b9119138ef9f00a0`);
-  const genres = await genreApi.data.results.map((e) => {return e.name});
+  const genres = await genreApi.data.results.map((e) => {return e.name}); // array de generos
 
   genres.forEach(e =>{
     Genero.findOrCreate({
@@ -58,10 +59,27 @@ const getAllGenres = async() => {
   return allGenres;
 }
 
+const getAllPlataforms = async()=>{
+  const platformApi = await axios.get(`https://api.rawg.io/api/games?key=2b6c32f9f7a749d9b9119138ef9f00a0`);
+  const platforms = await platformApi.data.results.map(e => {return e.platforms.map((p) => p.platform.name)});
+  const arraysimple = platforms.flat();
+
+
+  arraysimple.forEach(e =>{
+    Plataform.findOrCreate({
+      where:{ name: e}
+    })
+  })
+
+  const allPlatform = await Plataform.findAll();
+  return allPlatform;
+}
+
 
 module.exports = {
 	getApiVideogames,
 	getInfoDatabase,
 	getAllVideogames,
-  getAllGenres
+  getAllGenres,
+  getAllPlataforms
 };
