@@ -29,7 +29,7 @@ router.get("/", async (req , res) =>{
 
 router.post("/", async(req , res) =>{
     // res.send("Soy el post /videogames")
-    //let plataformas = await getAllPlataforms();
+    let plataformas = await getAllPlataforms();
     let {name, description, released, image, rating, platform, genres} = req.body;
 
     let gameCreated = await Videogame.create({
