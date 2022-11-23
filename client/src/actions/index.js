@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 //----------------------------------------------------
-export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES"
+export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE"
 
 //----------------------------------------------------
 

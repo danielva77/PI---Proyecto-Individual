@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 //import { GET_ALL_VIDEOGAMES } from "../../actions";
 import { Link } from "react-router-dom";
-import { getAllVideogames } from "../../actions";
+import { getAllVideogames, filterVideogamesByGenre } from "../../actions";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 
@@ -34,6 +34,10 @@ export default function Home() {
     dispatch(getAllVideogames());
   }
 
+  function handleFilterByGenre(e){
+    dispatch(filterVideogamesByGenre(e.target.value))
+  };
+
   return (
     <div>
       <Link to="/videogames">Juegos</Link>
@@ -47,8 +51,29 @@ export default function Home() {
       />
 
       <div>
+        <select onChange={e =>{handleFilterByGenre(e)}}>
+          <option value="all">Todos</option>
+          <option value="Action">Accion</option>
+          <option value="Adventure">Aventura</option>
+          <option value="Indie">Indie</option>
+          <option value="RPG">RPG</option>
+          <option value="Strategy">Estrategia</option>
+          <option value="Shooter">Disparos</option>
+          <option value="Casual">Casual</option>
+          <option value="Simulation">Simulacion</option>
+          <option value="Puzzle">Puzzle</option>
+          <option value="Arcade">Arcade</option>
+          <option value="Platformer">Plataformas</option>
+          <option value="Racing">Carreras</option>
+          <option value="Massively Multiplayer">Multijugador</option>
+          <option value="Sports">Deportes</option>
+          <option value="Fighting">Pelea</option>
+          <option value="Family">Familia</option>
+          <option value="Board Games">Juegos de mesa</option>
+          <option value="Educational">Educacional</option>
+        </select>
         <select> Filtrar
-          <option value="genero">genero</option>
+        <option value="all">Todos</option>
           <option value="existente">existente</option>
           <option value="creado">creado</option>
         </select>
