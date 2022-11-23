@@ -15,3 +15,11 @@ export function getAllVideogames(){
     });
   };
 };
+
+export function filterVideogamesByGenre(payload){
+  return{
+    type: "FILTER_BY_GENRE",
+    payload,
+  };
+};
+
