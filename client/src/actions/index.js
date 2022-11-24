@@ -2,7 +2,8 @@ import axios from 'axios';
 
 //----------------------------------------------------
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
-export const FILTER_BY_GENRE = "FILTER_BY_GENRE"
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
+export const FILTER_CREATED = "FILTER_CREATED";
 
 //----------------------------------------------------
 
@@ -20,6 +21,13 @@ export function getAllVideogames(){
 export function filterVideogamesByGenre(payload){
   return{
     type: "FILTER_BY_GENRE",
+    payload,
+  };
+};
+
+export function filterCreated(payload){
+  return{
+    type: "FILTER_CREATED",
     payload,
   };
 };

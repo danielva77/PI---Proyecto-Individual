@@ -1,7 +1,8 @@
 
 import{
     GET_ALL_VIDEOGAMES,
-    FILTER_BY_GENRE
+    FILTER_BY_GENRE,
+    FILTER_CREATED
 } from "../actions/index";
 
 const initialState = {
@@ -24,8 +25,20 @@ export default function rootReducer(state=initialState, action){
         ...state,
         videogames: genreFilter,
       }
-      default:
-        return state;
+    case FILTER_CREATED:
+      const allVideogames2 = state.allVideogames;
+      const createdFilter = action.payload === "creado" ?
+          allVideogames2.filter(e => (e.id.length>10)) : //mejorar la logica del ID.
+          allVideogames2.filter(e => (e.id.length<10));
+      return{
+        ...state,
+        videogames: action.payload === "all" ? allVideogames2 :
+          createdFilter,
+      }
+
+
+          default:
+            return state;
   };
 };
 
