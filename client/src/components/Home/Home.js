@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 //import { GET_ALL_VIDEOGAMES } from "../../actions";
 import { Link } from "react-router-dom";
-import { getAllVideogames, filterVideogamesByGenre, filterCreated } from "../../actions";
+import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName } from "../../actions";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 
@@ -14,6 +14,7 @@ export default function Home() {
 //Paginado
   const [currentPage, setCurrentPage] = useState(1);  //pag actual
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
+  const [orden, setOrden] = useState("");
   const indexOfLastVideogame = currentPage * videogamesPerPage;
   const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage;
   const currentVideogames = allVideogames.slice(indexOfFirstVideogame , indexOfLastVideogame);
@@ -30,7 +31,7 @@ export default function Home() {
   }, [dispatch]);
 
   function handleClick(e){
-    e.preventDefaukt();
+    e.preventDefault();
     dispatch(getAllVideogames());
   };
 
@@ -41,6 +42,13 @@ export default function Home() {
   function handleFilterCreated(e){
     dispatch(filterCreated(e.target.value))
   };
+
+  function handleSort(e){
+    e.preventDefault();
+    dispatch(OrderByName(e.target.value))
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`)
+  }
 
   return (
     <div>
@@ -77,11 +85,12 @@ export default function Home() {
           <option value="Educational">Educacional</option>
         </select>
         <select onChange={e =>{handleFilterCreated(e)}}> Filtrar
-        <option value="all">Todos</option>
+          <option value="all">Todos</option>
           <option value="existente">existente</option>
           <option value="creado">creado</option>
         </select>
-        <select> Ordenar
+        <select onChange={e =>{handleSort(e)}}> 
+        <option disabled selected>Ordenar</option>
           <option value="ascendente">Ascendente A-Z</option>
           <option value="descendente">Descendente Z-A</option>
           <option value="mayor">Mayor rating</option>
