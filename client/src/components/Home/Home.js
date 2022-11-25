@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName, OrderByRating } from "../../actions";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
+import SearchBar from "../SearchBar/searchBar";
 
 
 export default function Home() {
@@ -67,6 +68,8 @@ export default function Home() {
       allVideogames = {allVideogames.length}
       paginado = {paginado}
       />
+
+      <SearchBar />
 
       <div>
         <select onChange={e =>{handleFilterByGenre(e)}}>

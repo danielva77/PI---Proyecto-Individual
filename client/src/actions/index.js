@@ -52,13 +52,14 @@ export function OrderByRating(payload){
 export function getNameVideogames(name){
   return async function(dispatch){
     try {
-      let json = await axios.get("http://localhost:3000/videogames?name="+name);
-      return({
+      let json = await axios.get("http://localhost:3001/videogames?name="+name);
+      return dispatch({
         type: "GET_NAME_VIDEOGAME",
         payload: json.data,
       })
     } catch (error) {
         console.log(error)
+        console.log("prueba error obtener name de juego")
     };
   };
 };
