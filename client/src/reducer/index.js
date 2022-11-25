@@ -59,6 +59,22 @@ export default function rootReducer(state=initialState, action){
           ...state,
           videogames: orderName,
         }
+    case ORDER_BY_RATING:
+      let orderRating = action.payload === "mayor" ?
+      state.videogames.sort(function(a,b){
+        if (a.rating > b.rating){return 1};
+        if (b.rating > a.rating){return -1};
+        return 0;
+      }) :
+      state.videogames.sort(function(a,b){
+        if (a.rating < b.rating){return 1};
+        if (b.rating < a.rating){return -1};
+        return 0;
+      })
+      return{
+        ...state,
+        videogames: orderRating,
+      }
 
 
           default:

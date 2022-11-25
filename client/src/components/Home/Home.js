@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 //import { GET_ALL_VIDEOGAMES } from "../../actions";
 import { Link } from "react-router-dom";
-import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName } from "../../actions";
+import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName, OrderByRating } from "../../actions";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 
@@ -49,6 +49,12 @@ export default function Home() {
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`)
   }
+  function handleSortRating(e){
+    e.preventDefault();
+    dispatch(OrderByRating(e.target.value))
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`)
+  }
 
   return (
     <div>
@@ -90,9 +96,12 @@ export default function Home() {
           <option value="creado">creado</option>
         </select>
         <select onChange={e =>{handleSort(e)}}> 
-        <option disabled selected>Ordenar</option>
+          <option disabled selected>Ordenar por nombre</option>
           <option value="ascendente">Ascendente A-Z</option>
           <option value="descendente">Descendente Z-A</option>
+        </select>
+        <select onChange={e =>{handleSortRating(e)}}> 
+          <option disabled selected>Ordenar por rating</option>
           <option value="mayor">Mayor rating</option>
           <option value="menor">Menor rating</option>
         </select>
