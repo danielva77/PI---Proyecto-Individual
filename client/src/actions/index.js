@@ -6,6 +6,7 @@ export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const FILTER_CREATED = "FILTER_CREATED";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
+export const GET_NAME_VIDEOGAME = "GET_NAME_VIDEOGAME";
 
 //----------------------------------------------------
 
@@ -48,3 +49,16 @@ export function OrderByRating(payload){
   };
 };
 
+export function getNameVideogames(name){
+  return async function(dispatch){
+    try {
+      let json = await axios.get("http://localhost:3000/videogames?name="+name);
+      return({
+        type: "GET_NAME_VIDEOGAME",
+        payload: json.data,
+      })
+    } catch (error) {
+        console.log(error)
+    };
+  };
+};

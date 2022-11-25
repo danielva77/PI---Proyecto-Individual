@@ -4,7 +4,8 @@ import{
     FILTER_BY_GENRE,
     FILTER_CREATED,
     ORDER_BY_NAME,
-    ORDER_BY_RATING
+    ORDER_BY_RATING,
+    GET_NAME_VIDEOGAME
 } from "../actions/index";
 
 const initialState = {
@@ -75,6 +76,12 @@ export default function rootReducer(state=initialState, action){
         ...state,
         videogames: orderRating,
       }
+
+    case GET_NAME_VIDEOGAME:
+      return{
+        ...state,
+        videogames: action.payload,
+      };
 
 
           default:
