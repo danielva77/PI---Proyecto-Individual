@@ -8,7 +8,7 @@ export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const GET_NAME_VIDEOGAME = "GET_NAME_VIDEOGAME";
 export const GET_GENRES = "GET_GENRES";
-
+export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
 //----------------------------------------------------
 
 export function getAllVideogames(){
@@ -80,6 +80,9 @@ export function postVideogame(payload){
   return async function(dispatch){
     const response = await axios.post("http://localhost:3001/videogames", payload);
 
-    return response;
+    return dispatch({
+      type: "POST_VIDEOGAMES",
+			payload: response.data,
+    })
   }
 }

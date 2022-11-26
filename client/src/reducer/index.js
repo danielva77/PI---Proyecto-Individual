@@ -6,7 +6,8 @@ import{
     ORDER_BY_NAME,
     ORDER_BY_RATING,
     GET_NAME_VIDEOGAME,
-    GET_GENRES
+    GET_GENRES,
+    POST_VIDEOGAMES
 } from "../actions/index";
 
 const initialState = {
@@ -84,7 +85,7 @@ export default function rootReducer(state=initialState, action){
         videogames: action.payload,
       };
 
-    case POST_CHARACTER:
+    case POST_VIDEOGAMES:
       return{
         ...state,
       }
