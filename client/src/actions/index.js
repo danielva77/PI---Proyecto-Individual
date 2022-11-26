@@ -7,6 +7,7 @@ export const FILTER_CREATED = "FILTER_CREATED";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const GET_NAME_VIDEOGAME = "GET_NAME_VIDEOGAME";
+export const GET_GENRES = "GET_GENRES";
 
 //----------------------------------------------------
 
@@ -63,3 +64,22 @@ export function getNameVideogames(name){
     };
   };
 };
+
+export function getGenre(){
+  return async function(dispatch){
+    let generos = await axios.get("http://localhost:3001/genres")
+    
+    return dispatch({
+      type: "GET_GENRES",
+      payload: generos.data,
+    });
+  };
+};
+
+export function postVideogame(payload){
+  return async function(dispatch){
+    const response = await axios.post("http://localhost:3001/videogames", payload);
+
+    return response;
+  }
+}
