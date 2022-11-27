@@ -70,6 +70,13 @@ function handleSubmit(e){
   });
   history.push("/Home");
 } 
+
+function handleDelete(el){
+  setInput({
+    ...input,
+    genres: input.genres.filter(g => g !==el)
+  })
+}
 //***************************
   
   return(
@@ -123,9 +130,9 @@ function handleSubmit(e){
               )}
             )}
           </select>
-          <div>
+          {/* <div>
             <ul><li>{input.genres.map(e => e+" ,")}</li></ul>
-          </div>
+          </div> */}
           </div>
 
           <div>
@@ -137,7 +144,13 @@ function handleSubmit(e){
           
         </div>
       </form>
-
+          {
+            input.genres.map(el => 
+              <div>
+                <p>{el}</p>
+                <button onClick={e =>{handleDelete(el)}}>x</button>
+              </div>)
+          }
 
 
 
