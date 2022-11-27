@@ -9,6 +9,7 @@ export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const GET_NAME_VIDEOGAME = "GET_NAME_VIDEOGAME";
 export const GET_GENRES = "GET_GENRES";
 export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
+export const GET_PLATFORMS = "GET_PLATFORMS";
 //----------------------------------------------------
 
 export function getAllVideogames(){
@@ -86,3 +87,14 @@ export function postVideogame(payload){
     })
   }
 }
+
+export function getPlatform(){
+  return async function(dispatch){
+    let plataformas = await axios.get("http://localhost:3001/platforms")
+    
+    return dispatch({
+      type: "GET_PLATFORMS",
+      payload: plataformas.data,
+    });
+  };
+};

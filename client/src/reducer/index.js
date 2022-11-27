@@ -7,13 +7,15 @@ import{
     ORDER_BY_RATING,
     GET_NAME_VIDEOGAME,
     GET_GENRES,
-    POST_VIDEOGAMES
+    POST_VIDEOGAMES,
+    GET_PLATFORMS
 } from "../actions/index";
 
 const initialState = {
     videogames: [],
     allVideogames: [],
-    genres: []
+    genres: [],
+    platforms:[]
 }
 export default function rootReducer(state=initialState, action){
   switch (action.type) {
@@ -94,6 +96,12 @@ export default function rootReducer(state=initialState, action){
       return{
         ...state,
         genres: action.payload,
+      }
+
+    case GET_PLATFORMS:
+      return{
+        ...state,
+        platforms: action.payload,
       }
 
 
