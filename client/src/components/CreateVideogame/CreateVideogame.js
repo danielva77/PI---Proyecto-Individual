@@ -147,8 +147,9 @@ function handleDelete(el){
           {
             input.genres.map(el => 
               <div>
-                <p>{el}</p>
                 <button onClick={e =>{handleDelete(el)}}>x</button>
+                <p>{el}</p>
+
               </div>)
           }
 
@@ -156,8 +157,6 @@ function handleDelete(el){
 
     </div>
   )
-
-
 }
 
 
