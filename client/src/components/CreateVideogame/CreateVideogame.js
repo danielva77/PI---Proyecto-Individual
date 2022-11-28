@@ -136,7 +136,7 @@ function handleDelete(el){
           </div>
 
           <div>
-            <button type="submit">Cargar</button>
+            <button type="submit" onClick={(e) =>{handleSubmit(e)}}>Cargar</button>
               <Link to="/Home">
               <button>Cancelar</button>
               </Link>

@@ -4,11 +4,13 @@ import Style from "./Landing.module.css"
 
 export default function Landing(){
 	return(
-		<div className={Style.landing}>
+		<div className={Style.Loading}>
 			<div><h1>Bienvenido</h1></div>
-			<Link to="/Home">
-				<button>Ingresar</button>
-			</Link>
+			
+			<div className={Style.div2}><Link to="/Home">
+				<button className={Style.inicio}>Ingresar</button>
+				</Link>
+			</div>
 		</div>
 	)
 };

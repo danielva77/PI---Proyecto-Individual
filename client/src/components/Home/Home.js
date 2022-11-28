@@ -7,6 +7,7 @@ import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName, 
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/searchBar";
+import Styles from "../Home/Home.module.css"
 
 
 export default function Home() {
@@ -58,10 +59,13 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <Link to="/videogames">Carga tu propio Juego</Link>
+    <div className={Styles.body}>
+      <div class={Styles.icon}>
+      <Link to="/Home"><img  src="./mushroom.png" alt="icon" /></Link></div>
       <h1>VIDEOGAMES</h1>
-      <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button>
+      <Link to="/videogames">Carga tu propio Juego</Link>
+      <div>
+      <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div>
 
       <Paginado 
       videogamesPerPage = {videogamesPerPage}

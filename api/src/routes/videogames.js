@@ -62,6 +62,7 @@ router.post("/", async(req , res) =>{
     //   where: {name: platform}
     // });
     // gameCreated.addPlataform(platformdb);
+    console.log(platforms);
     if (platforms.length) {
       platforms.map(async platform => {
           let p = await Plataform.findOrCreate({
