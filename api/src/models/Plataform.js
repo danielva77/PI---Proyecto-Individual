@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('Plataform',{
-    // No es necesario ID
+  sequelize.define('Plataform',{
     name: {
       type: DataTypes.STRING,
       allowNull: false,

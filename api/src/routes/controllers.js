@@ -27,13 +27,19 @@ const getApiVideogames = async() => {
 
 const getInfoDatabase = async() => {
 	return await Videogame.findAll({
-		include: {
+		include: [{
 			model: Genero,
 			attributes: ['name'],
 			through: {
 				attributes: [],
 			},
-		},
+		},{
+      model :Plataform,
+      attributes: ['name'],
+      through : {
+        attributes : [],
+      }
+    }]
 	});
 };
 

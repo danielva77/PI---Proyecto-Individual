@@ -29,28 +29,50 @@ router.get("/", async (req , res) =>{
 
 router.post("/", async(req , res) =>{
     // res.send("Soy el post /videogames")
-    let plataformas = await getAllPlataforms();
-    let {name, description, released, image, rating, platform, genres} = req.body;
+   // let plataformas = await getAllPlataforms();
+    let {name, description, released, image, rating, platforms, genres} = req.body;
 
     let gameCreated = await Videogame.create({
         name, 
         description,
         released, 
         image, 
-        rating,
-        createdInDb: true,
+        rating
+       // createdInDb: true,
         //id: uuidv4()
     });
 
-    let generodb = await Genero.findAll({
-      where: {name: genres}
-    })
-    gameCreated.addGenero(generodb);
+    // let generodb = await Genero.findAll({
+    //   where: {name: genres}
+    // });
+    // gameCreated.addGenero(generodb);
+    // console.log(generodb)
+    if (genres.length) {
+      genres.map(async genre => {
+          let g = await Genero.findOrCreate({
+              where: { name: genre }
+          })
 
-    let platformdb = await Plataform.findAll({
-      where: {name: platform}
-    })
-    gameCreated.addPlataform(platformdb);
+          gameCreated.addGenero(g[0])
+          //console.log(g[0])
+      })
+  }
+
+    // let platformdb = await Plataform.findAll({
+    //   where: {name: platform}
+    // });
+    // gameCreated.addPlataform(platformdb);
+    if (platforms.length) {
+      platforms.map(async platform => {
+          let p = await Plataform.findOrCreate({
+              where: { name: platform }
+          })
+
+          gameCreated.addPlataform(p[0]);
+          console.log(p[0])
+      })
+  }
+
 
     res.status(200).send("Videogames created succesfully")
 })
