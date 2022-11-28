@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <div>
-      <Link to="/videogames">Juegos</Link>
+      <Link to="/videogames">Carga tu propio Juego</Link>
       <h1>VIDEOGAMES</h1>
       <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button>
 
