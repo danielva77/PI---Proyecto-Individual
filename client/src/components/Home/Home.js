@@ -60,9 +60,14 @@ export default function Home() {
 
   return (
     <div className={Styles.body}>
-      <div class={Styles.icon}>
-      <Link to="/Home"><img  src="./mushroom.png" alt="icon" /></Link></div>
-      <h1>VIDEOGAMES</h1>
+      <div className={Styles.nav}>
+        {/* <div>
+          <Link to="/Home"><img class={Styles.icon} src="./mushroom.png" alt="icon" /></Link>
+        </div> */}
+          <Link to="/Home"><h1 className={Styles.linknav}>Home</h1></Link>
+        <h1 className={Styles.linknav}>About</h1>
+        <SearchBar />
+      </div>
       <Link to="/videogames">Carga tu propio Juego</Link>
       <div>
       <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div>
@@ -73,7 +78,7 @@ export default function Home() {
       paginado = {paginado}
       />
 
-      <SearchBar />
+
 
       <div>
         <select onChange={e =>{handleFilterByGenre(e)}}>

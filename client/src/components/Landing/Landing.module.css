@@ -1,35 +1,14 @@
-html, body {
-    background-image: url("./videogame.png");
-    background-color: black;
-    background-repeat: no-repeat;
-    height:100%;
-    margin:0;
-    background-position: center;
-}
-
-@keyframes animacion{
-    from { margin-left: 50%; color: white;}
-    25% { margin-left:50%; margin-top:1%; }
-    50% { margin-left:50%; margin-top:0%;}
-    75% { margin-left:50%; margin-top:1%; }
-    to { margin-left: 50%; }
-}
-.inicio {
-    animation-duration: 7s;
-    animation-name: animacion;
-    animation-iteration-count: infinite;
-    position: absolute;
-    top: 90%;
-  }
-
-
-  h1{
+.container{
+  align-items: flex-end;
     display: flex;
-    justify-content: center;
-  }
-
-  .div2{
-    width: 100%;
+    flex-direction: column;
+    gap: 10px;
     height: 100%;
-    background-color: aqua;
-  }
+    justify-content: center;
+    text-align: right;
+}
+
+.loader{
+  align-items: center;
+  display: flex;
+}
