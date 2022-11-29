@@ -19,3 +19,35 @@
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
 }
+
+.card{
+    /*background-color: gray;*/
+    width: 275px;
+    height: auto;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: aqua;
+    justify-content: center;
+    margin: 5%;
+  }
+  img{
+    width: 250px;
+    height: 250px;
+  }
+  .container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    background-color: yellow;
+  }
+
+  .paginado{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }

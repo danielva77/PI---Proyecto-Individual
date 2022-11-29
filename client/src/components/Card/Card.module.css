@@ -1,0 +1,9 @@
+.text{
+    color: white;
+    text-decoration: none;
+}
+
+.imagen{
+    display: flex;
+    justify-content: center;
+}

@@ -7,6 +7,7 @@ import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName, 
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/searchBar";
+import Footer from "../Footer/Footer";
 import Styles from "../Home/Home.module.css"
 
 
@@ -64,19 +65,21 @@ export default function Home() {
         {/* <div>
           <Link to="/Home"><img class={Styles.icon} src="./mushroom.png" alt="icon" /></Link>
         </div> */}
-          <Link to="/Home"><h1 className={Styles.linknav}>Home</h1></Link>
-        <h1 className={Styles.linknav}>About</h1>
+          <Link to="/Home"><h1 className={Styles.linknav}>Home 🏠</h1></Link>
+        <h1 className={Styles.linknav}><a href="#Footer">About 📨</a></h1>
         <SearchBar />
       </div>
       <Link to="/videogames">Carga tu propio Juego</Link>
       <div>
       <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div>
 
-      <Paginado 
-      videogamesPerPage = {videogamesPerPage}
-      allVideogames = {allVideogames.length}
-      paginado = {paginado}
-      />
+      <div className={Styles.paginado}>
+        <Paginado 
+        videogamesPerPage = {videogamesPerPage}
+        allVideogames = {allVideogames.length}
+        paginado = {paginado}
+        />
+      </div>
 
 
 
@@ -119,23 +122,32 @@ export default function Home() {
         </select>
       </div>
 
-      <div>
+      <div  className={Styles.container}>
         {
         currentVideogames?.map((el) => {
-          return(  
-            <Link to={"/Home/"+el.id}>
-            <Card 
-              name = {el.name}
-              image ={el.image}
-              released ={el.released}
-              genres = {el.genres}/>
-            </Link>
+          return( 
+            <div>
+              <Link to={"/Home/"+el.id}>
+                <div>
+                  <div className={Styles.card}>
+                    <Card 
+                      name = {el.name}
+                      image ={el.image}
+                      released ={el.released}
+                      genres = {el.genres}/>
+                  </div>
+                </div>
+              </Link>
+            </div>
           )
         })
         }
       </div>
-
+    <div id="Footer">
+      <Footer />
     </div>
+    </div>
+
 
   )
 }
