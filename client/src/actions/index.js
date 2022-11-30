@@ -10,6 +10,7 @@ export const GET_NAME_VIDEOGAME = "GET_NAME_VIDEOGAME";
 export const GET_GENRES = "GET_GENRES";
 export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
+export const GET_DETAIL = "GET_DETAIL";
 //----------------------------------------------------
 
 export function getAllVideogames(){
@@ -98,3 +99,16 @@ export function getPlatform(){
     });
   };
 };
+
+export const getDetail = (id) => {
+  return async function (dispatch) {
+      const response = await axios.get(
+          `http://localhost:3001/videogame/${id}`
+      )
+
+      return dispatch({
+          type: GET_DETAIL,
+          payload: response.data
+      })
+  }
+}

@@ -17,7 +17,7 @@ export default function CreateVideogame(){
         released : " ",
         image : " ",
         rating : 0,
-        platform : [], 
+        platforms : [], 
         genres : []
     });
 
@@ -27,7 +27,7 @@ export default function CreateVideogame(){
 
         useEffect(() =>{
           dispatch(getPlatform())}, []);
-        const platforms = useSelector(state => state.platforms);
+        const platform = useSelector(state => state.platforms);
 
 
 //******Funciones************
@@ -42,7 +42,7 @@ function handleCheck(e){
   if(e.target.checked){
     setInput({
       ...input,
-      platform: e.target.value,
+      platforms: [...input.platforms, e.target.value]
     })
   }
 }
@@ -65,7 +65,7 @@ function handleSubmit(e){
     released : " ",
     image : " ",
     rating : 0,
-    platform : [], 
+    platforms : [], 
     genres : []
   });
   history.push("/Home");
@@ -117,7 +117,7 @@ function handleDelete(el){
           </div>
 
           <label>Plataforma:</label>
-          {platforms.map((e) =>{
+          {platform.map((e) =>{
             return(<label><input type="checkbox" name={e.name} value={e.name} onChange={(e) =>{handleCheck(e)}}/>{e.name}</label>)
           })}
 

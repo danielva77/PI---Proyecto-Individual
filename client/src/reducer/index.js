@@ -8,14 +8,16 @@ import{
     GET_NAME_VIDEOGAME,
     GET_GENRES,
     POST_VIDEOGAMES,
-    GET_PLATFORMS
+    GET_PLATFORMS,
+    GET_DETAIL
 } from "../actions/index";
 
 const initialState = {
     videogames: [],
     allVideogames: [],
     genres: [],
-    platforms:[]
+    platforms:[],
+    detail:[]
 }
 export default function rootReducer(state=initialState, action){
   switch (action.type) {
@@ -103,7 +105,11 @@ export default function rootReducer(state=initialState, action){
         ...state,
         platforms: action.payload,
       }
-
+    case GET_DETAIL:
+      return {
+          ...state,
+          detail: action.payload,
+      }
 
           default:
             return state;
