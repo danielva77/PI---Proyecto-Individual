@@ -64,7 +64,7 @@ export default function Home() {
 {/* ************* NAVBAR**************************** */}      
       <div className={Styles.nav}>
 
-        <div className={Styles.ordenfiltro}><Link to="/Home" onClick={e =>{handleClick(e)}}><h1 className={Styles.linknav}>Home 🏠</h1></Link></div>
+        <div className={Styles.ordenfiltro}><Link to="/"><h1 className={Styles.linknav}>Home 🏠</h1></Link></div>
         <div className={Styles.ordenfiltro}><h1 className={Styles.linknav}><a href="#Footer">About 📨</a></h1></div>
         <div className={Styles.ordenfiltro}><SearchBar /></div>
       </div>
