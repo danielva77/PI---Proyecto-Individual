@@ -1,9 +1,14 @@
 .text{
     color: white;
     text-decoration: none;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
 }
 
 .imagen{
     display: flex;
     justify-content: center;
+    margin: 2%;
 }

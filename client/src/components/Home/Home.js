@@ -61,18 +61,19 @@ export default function Home() {
 
   return (
     <div className={Styles.body}>
+{/* ************* NAVBAR**************************** */}      
       <div className={Styles.nav}>
-        {/* <div>
-          <Link to="/Home"><img class={Styles.icon} src="./mushroom.png" alt="icon" /></Link>
-        </div> */}
-          <Link to="/Home"><h1 className={Styles.linknav}>Home 🏠</h1></Link>
-        <h1 className={Styles.linknav}><a href="#Footer">About 📨</a></h1>
-        <SearchBar />
-      </div>
-      <Link to="/videogames">Carga tu propio Juego</Link>
-      <div>
-      <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div>
 
+        <div className={Styles.ordenfiltro}><Link to="/Home" onClick={e =>{handleClick(e)}}><h1 className={Styles.linknav}>Home 🏠</h1></Link></div>
+        <div className={Styles.ordenfiltro}><h1 className={Styles.linknav}><a href="#Footer">About 📨</a></h1></div>
+        <div className={Styles.ordenfiltro}><SearchBar /></div>
+      </div>
+{/* ************* ------**************************** */} 
+
+      <Link to="/videogames">Carga tu propio Juego</Link>
+      {/* <div>
+      <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div> */}
+{/* ************* PAGINADO **************************** */}
       <div className={Styles.paginado}>
         <Paginado 
         videogamesPerPage = {videogamesPerPage}
@@ -80,47 +81,61 @@ export default function Home() {
         paginado = {paginado}
         />
       </div>
+{/* ************* -------- **************************** */}
 
 
-
-      <div>
-        <select onChange={e =>{handleFilterByGenre(e)}}>
-          <option value="all">Todos</option>
-          <option value="Action">Accion</option>
-          <option value="Adventure">Aventura</option>
-          <option value="Indie">Indie</option>
-          <option value="RPG">RPG</option>
-          <option value="Strategy">Estrategia</option>
-          <option value="Shooter">Disparos</option>
-          <option value="Casual">Casual</option>
-          <option value="Simulation">Simulacion</option>
-          <option value="Puzzle">Puzzle</option>
-          <option value="Arcade">Arcade</option>
-          <option value="Platformer">Plataformas</option>
-          <option value="Racing">Carreras</option>
-          <option value="Massively Multiplayer">Multijugador</option>
-          <option value="Sports">Deportes</option>
-          <option value="Fighting">Pelea</option>
-          <option value="Family">Familia</option>
-          <option value="Board Games">Juegos de mesa</option>
-          <option value="Educational">Educacional</option>
-        </select>
-        <select onChange={e =>{handleFilterCreated(e)}}> Filtrar
-          <option value="all">Todos</option>
-          <option value="existente">existente</option>
-          <option value="creado">creado</option>
-        </select>
-        <select onChange={e =>{handleSort(e)}}> 
-          <option disabled selected>Ordenar por nombre</option>
-          <option value="ascendente">Ascendente A-Z</option>
-          <option value="descendente">Descendente Z-A</option>
-        </select>
-        <select onChange={e =>{handleSortRating(e)}}> 
-          <option disabled selected>Ordenar por rating</option>
-          <option value="mayor">Mayor rating</option>
-          <option value="menor">Menor rating</option>
-        </select>
+{/* ************* FILTROS Y ORDEN **************************** */}
+      <div className={Styles.filtros}>
+        <div className={Styles.ordenfiltro}>
+          <p>Filtrar por Genero</p>
+          <select onChange={e =>{handleFilterByGenre(e)}}>
+            <option value="all">Todos</option>
+            <option value="Action">Accion</option>
+            <option value="Adventure">Aventura</option>
+            <option value="Indie">Indie</option>
+            <option value="RPG">RPG</option>
+            <option value="Strategy">Estrategia</option>
+            <option value="Shooter">Disparos</option>
+            <option value="Casual">Casual</option>
+            <option value="Simulation">Simulacion</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="Arcade">Arcade</option>
+            <option value="Platformer">Plataformas</option>
+            <option value="Racing">Carreras</option>
+            <option value="Massively Multiplayer">Multijugador</option>
+            <option value="Sports">Deportes</option>
+            <option value="Fighting">Pelea</option>
+            <option value="Family">Familia</option>
+            <option value="Board Games">Juegos de mesa</option>
+            <option value="Educational">Educacional</option>
+          </select>
+        </div>
+        <div className={Styles.ordenfiltro}>
+          <p>Filtrar por tipo</p>
+          <select onChange={e =>{handleFilterCreated(e)}}> Filtrar
+            <option value="all">Todos</option>
+            <option value="existente">existente</option>
+            <option value="creado">creado</option>
+          </select>
+        </div>
+        <div className={Styles.ordenfiltro}>
+          <p>Ordenar por nombre</p>
+          <select onChange={e =>{handleSort(e)}}> 
+            <option disabled selected>Ordenar por nombre</option>
+            <option value="ascendente">Ascendente A-Z</option>
+            <option value="descendente">Descendente Z-A</option>
+          </select>
+        </div>
+        <div className={Styles.ordenfiltro}>
+          <p>Ordenar por rating</p>
+          <select onChange={e =>{handleSortRating(e)}}> 
+            <option disabled selected>Ordenar por rating</option>
+            <option value="mayor">Mayor rating</option>
+            <option value="menor">Menor rating</option>
+          </select>
+        </div>
       </div>
+{/* ************* ----------------**************************** */}
 
       <div  className={Styles.container}>
         {
@@ -134,6 +149,7 @@ export default function Home() {
                       name = {el.name}
                       image ={el.image}
                       released ={el.released}
+                      rating ={el.rating}
                       genres = {el.genres}/>
                   </div>
                 </div>
