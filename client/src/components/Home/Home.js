@@ -130,8 +130,8 @@ export default function Home() {
           <p>Ordenar por rating</p>
           <select onChange={e =>{handleSortRating(e)}}> 
             <option disabled selected>Ordenar por rating</option>
-            <option value="mayor">Mayor rating</option>
-            <option value="menor">Menor rating</option>
+            <option value="mayor">Menor rating</option>
+            <option value="menor">Mayor rating</option>
           </select>
         </div>
       </div>
