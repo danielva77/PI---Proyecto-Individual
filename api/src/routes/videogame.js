@@ -3,6 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const {
 	getApiVideogames,
+  getAllVideogames
 } = require('./controllers');
 
 
@@ -12,7 +13,8 @@ const router = Router();
 router.get("/:id", async(req , res) =>{
     // res.send("Soy el get /videogame")
     const {id} = req.params;
-    const allVideogames = await getApiVideogames();
+    // const allVideogames = await getApiVideogames();
+    const allVideogames = await getAllVideogames();
 
     if(id){
       let videogameId = await allVideogames.filter(e => e.id == id);
