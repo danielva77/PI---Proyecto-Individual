@@ -8,7 +8,8 @@ import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/searchBar";
 import Footer from "../Footer/Footer";
-import Styles from "../Home/Home.module.css"
+import Styles from "../Home/Home.module.css";
+import Loader from "../Cargando/Cargando";
 
 
 export default function Home() {
@@ -26,8 +27,6 @@ export default function Home() {
     setCurrentPage(pageNumber);
   };
 
-
-  console.log("a ver", currentVideogames)
 
   useEffect(() =>{
     dispatch(getAllVideogames());
@@ -140,7 +139,9 @@ export default function Home() {
 {/* ************* ----------------**************************** */}
       <div  className={Styles.container}>
         {
-
+          currentVideogames.length === 0 ? (
+            <Loader />
+          ) :
         currentVideogames?.map((el) => {
           return( 
             <div>

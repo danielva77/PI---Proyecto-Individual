@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../actions';
 
 export default function Detail(props){
-console.log(props);
+
 const dispatch = useDispatch();
 
 useEffect(() =>{
@@ -14,7 +14,7 @@ useEffect(() =>{
 
 // El id del creado esta como string
 
-const myGame = useSelector((state) => state.detail);
+let myGame = useSelector((state) => state.detail);
 return(
   <div>
     {
@@ -28,7 +28,7 @@ return(
         <p>Fecha de Lanzamiento: {myGame[0].released} </p>
         <p>Rating: {myGame[0].rating}</p>
         <p>Plataformas: {myGame[0].platforms ? myGame[0].platforms.join(", ") : myGame[0].Plataforms.map(e => e.name).join(", ")} </p>
-      </div> : <p>Loading ...</p>
+      </div> : <img src="https://media2.giphy.com/media/VseXvvxwowwCc/giphy.gif?cid=790b7611e620fe8638d1818e9c0588323836c9d62acdc114&rid=giphy.gif&ct=g" alt="Cargando ..."/>
     }
     <div>
       <Link to="/Home">
