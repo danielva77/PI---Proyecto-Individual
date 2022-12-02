@@ -27,16 +27,18 @@ export default function Home() {
   };
 
 
-
+  console.log("a ver", currentVideogames)
 
   useEffect(() =>{
     dispatch(getAllVideogames());
   }, [dispatch]);
 
-  function handleClick(e){
-    e.preventDefault();
-    dispatch(getAllVideogames());
-  };
+
+  // FUNCION QUE TRAE TODOS LOS JUEGOS AL HACER CLICK
+  // function handleClick(e){
+  //   e.preventDefault();
+  //   dispatch(getAllVideogames());
+  // };
 
   function handleFilterByGenre(e){
     dispatch(filterVideogamesByGenre(e.target.value))
@@ -136,9 +138,9 @@ export default function Home() {
         </div>
       </div>
 {/* ************* ----------------**************************** */}
-
       <div  className={Styles.container}>
         {
+
         currentVideogames?.map((el) => {
           return( 
             <div>
@@ -151,7 +153,9 @@ export default function Home() {
                       image ={el.image}
                       released ={el.released}
                       rating ={el.rating}
-                      genres = {el.genres}/>
+                      genres = {el.genres}
+                      key ={el.id}/>
+                      
                   </div>
                 </div>
               </Link>

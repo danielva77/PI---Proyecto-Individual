@@ -23,10 +23,14 @@ export default function CreateVideogame(){
 
 
     useEffect(() =>{
-        dispatch(getGenre())}, []);
+        dispatch(getGenre())
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
 
         useEffect(() =>{
-          dispatch(getPlatform())}, []);
+          dispatch(getPlatform())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
         const platform = useSelector(state => state.platforms);
 
 

@@ -9,6 +9,7 @@ const dispatch = useDispatch();
 
 useEffect(() =>{
   dispatch(getDetail(props.match.params.id))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [dispatch]);
 
 // El id del creado esta como string
@@ -20,7 +21,7 @@ return(
       myGame.length > 0 ?
       <div>
         <h1>{myGame[0].name}</h1>
-        <img src={myGame[0].image}></img>
+        <img src={myGame[0].image} alt="img"></img>
         <p>Generos: {myGame[0].genres ? myGame[0].genres : myGame[0].Generos.map(e => e.name).join(', ')}</p>
 
         {/* <p>Descripcion: {myGame[0].description}</p> // me falta traer */}
