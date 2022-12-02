@@ -63,13 +63,14 @@ export default function Home() {
 {/* ************* NAVBAR**************************** */}      
       <div className={Styles.nav}>
 
-        <div className={Styles.ordenfiltro}><Link to="/"><h1 className={Styles.linknav}>Home 🏠</h1></Link></div>
-        <div className={Styles.ordenfiltro}><h1 className={Styles.linknav}><a href="#Footer">About 📨</a></h1></div>
+        <div className={Styles.ordenfiltro}><Link to="/"><h1 className={Styles.linknav}>Inicio 🏠</h1></Link></div>
+        <div className={Styles.ordenfiltro}><h1 className={Styles.linknav}>Recargar 🔅</h1></div>
         <div className={Styles.ordenfiltro}><SearchBar /></div>
       </div>
 {/* ************* ------**************************** */} 
-
-      <Link to="/videogames">Carga tu propio Juego</Link>
+      <div className={Styles.newgame}>
+      <Link to="/videogames">⭐ Carga tu propio Juego ⭐</Link>
+      </div>
       {/* <div>
       <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div> */}
 {/* ************* PAGINADO **************************** */}
