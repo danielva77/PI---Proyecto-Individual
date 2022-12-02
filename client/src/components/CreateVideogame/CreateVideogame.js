@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenre, getPlatform, postVideogame } from "../../actions";
+import Styles from "./Create.module.css";
 
 export default function CreateVideogame(){
     const dispatch = useDispatch();
@@ -84,7 +85,7 @@ function handleDelete(el){
 //***************************
   
   return(
-    <div>
+    <div className={Styles.container}>
       <div>
       <Link to="/Home">
         <button>Volver</button>

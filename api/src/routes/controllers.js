@@ -1,4 +1,5 @@
 const axios = require('axios');
+const db = require('../db');
 const { Videogame, Genero, Plataform, Op } = require('../db');
 
 const getApiVideogames = async() => {
@@ -26,7 +27,7 @@ const getApiVideogames = async() => {
 }
 
 const getInfoDatabase = async() => {
-	return await Videogame.findAll({
+	let db = await Videogame.findAll({
 		include: [{
 			model: Genero,
 			attributes: ['name'],
@@ -41,6 +42,7 @@ const getInfoDatabase = async() => {
       }
     }]
 	});
+  return db;
 };
 
 const getAllVideogames = async() => {

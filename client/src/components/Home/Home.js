@@ -26,8 +26,6 @@ export default function Home() {
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-
   useEffect(() =>{
     dispatch(getAllVideogames());
   }, [dispatch]);
@@ -143,6 +141,8 @@ export default function Home() {
             <Loader />
           ) :
         currentVideogames?.map((el) => {
+          let genero = el.genres ? el.genres : el.Generos.map(e => e.name).join(", ");
+    
           return( 
             <div>
               <Link to={"/videogame/"+el.id}>
@@ -154,7 +154,7 @@ export default function Home() {
                       image ={el.image}
                       released ={el.released}
                       rating ={el.rating}
-                      genres = {el.genres}
+                      genres = {genero}
                       key ={el.id}/>
                       
                   </div>

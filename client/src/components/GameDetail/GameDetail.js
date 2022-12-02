@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../actions';
+import Styles from "./detail.module.css"
 
 export default function Detail(props){
 
@@ -16,12 +17,12 @@ useEffect(() =>{
 
 let myGame = useSelector((state) => state.detail);
 return(
-  <div>
+  <div className={Styles.container}>
     {
       myGame.length > 0 ?
       <div>
         <h1>{myGame[0].name}</h1>
-        <img src={myGame[0].image} alt="img"></img>
+        <img src={myGame[0].image } alt="img"></img>
         <p>Generos: {myGame[0].genres ? myGame[0].genres : myGame[0].Generos.map(e => e.name).join(', ')}</p>
 
         {/* <p>Descripcion: {myGame[0].description}</p> // me falta traer */}
