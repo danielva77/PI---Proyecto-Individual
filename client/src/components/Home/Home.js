@@ -38,11 +38,19 @@ export default function Home() {
   // };
 
   function handleFilterByGenre(e){
-    dispatch(filterVideogamesByGenre(e.target.value))
+    e.preventDefault();
+    if(e.target.value === 'all') {
+      dispatch(getAllVideogames())
+  } else {
+    dispatch(filterVideogamesByGenre(e.target.value))}
   };
 
   function handleFilterCreated(e){
-    dispatch(filterCreated(e.target.value))
+    if(e.target.value === "all"){
+      dispatch(getAllVideogames())
+    }else{
+    dispatch(filterCreated(e.target.value))}
+    setCurrentPage(1)
   };
 
   function handleSort(e){
@@ -117,8 +125,8 @@ export default function Home() {
           <p>Filtrar por tipo</p>
           <select onChange={e =>{handleFilterCreated(e)}}> Filtrar
             <option value="all">Todos</option>
-            <option value="existente">existente</option>
-            <option value="creado">creado</option>
+            <option value="existente">Existentes</option>
+            <option value="creado">Creados</option>
           </select>
         </div>
         <div className={Styles.ordenfiltro}>

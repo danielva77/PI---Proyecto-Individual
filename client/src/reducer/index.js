@@ -31,10 +31,8 @@ export default function rootReducer(state=initialState, action){
 			};
     case FILTER_BY_GENRE:
       const allVideogames = state.allVideogames;
-      
-      const genreFilter = action.payload === "All" ? allVideogames :
-          // allVideogames.filter(e => { e.genres ? e.genres.includes(action.payload) : e.Generos.map(p =>p.name).join(", ").includes(action.payload)})
-          allVideogames.filter(e => e.genres? e.genres.includes(action.payload) : (e.Generos.map(p =>p.name).join(", ")).includes(action.payload));
+      // action.payload === "All" ? allVideogames :
+      const genreFilter = allVideogames.filter(e => e.genres? e.genres.includes(action.payload) : (e.Generos.map(p =>p.name).join(", ")).includes(action.payload));
       return{
         ...state,
         videogames: genreFilter,//ver
@@ -42,16 +40,26 @@ export default function rootReducer(state=initialState, action){
       }
     case FILTER_CREATED:
       const allVideogames2 = state.allVideogames;
-      const createdFilter = action.payload === "creado" ?
-          allVideogames2.filter(e => (e.id.length>10)) : //mejorar la logica del ID.
-          allVideogames2.filter(e => (e.id.length<10));
+      let createdFilter;
+      if(action.payload === "creado"){
+        createdFilter = allVideogames2.filter(e => (e.id.length>10))
+      }else{
+        createdFilter = allVideogames2.filter(e => (e.id.toString().length<10))
+      }
+      console.log("quiero ver",createdFilter )
       return{
         ...state,
-        videogames: action.payload === "all" ? allVideogames2 :
-          createdFilter,
-        // videogamesFiltered: action.payload === "all" ? allVideogames2 :
-        //   createdFilter,
-      }
+        videogames: createdFilter
+         }
+
+      // const allVideogames2 = state.allVideogames;
+      // const createdFilter = action.payload === "creado" ?
+      //     allVideogames2.filter(e => (e.id.length>10)) : //mejorar la logica del ID.
+      //     allVideogames2.filter(e => (e.id.length<10));
+      // return{
+      //   ...state,
+      //   videogames: action.payload === "all" ? allVideogames2 : createdFilter
+      // }
     
     case ORDER_BY_NAME:
       let orderName = action.payload === "ascendente" ?
