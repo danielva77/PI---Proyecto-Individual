@@ -63,6 +63,7 @@ export function getNameVideogames(name){
     } catch (error) {
         console.log(error)
         console.log("prueba error obtener name de juego")
+        alert("No hay juegos cargados con ese nombre")
     };
   };
 };
