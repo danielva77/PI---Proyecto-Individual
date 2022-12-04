@@ -83,11 +83,31 @@ const getAllPlataforms = async()=>{
   return allPlatform;
 }
 
+const getVideogamesById = async(id) => {
+
+  let extraido = [];
+      const url = `https://api.rawg.io/api/games/${id}?key=2b6c32f9f7a749d9b9119138ef9f00a0`;
+      const apiURL = await axios.get(url);
+      // const infoExtraida = await apiURL.data.results.map((e) => {
+        extraido = [{
+          id: apiURL.data.id,
+          name: apiURL.data.name,
+          image: apiURL.data.background_image,
+          released: apiURL.data.released,
+          rating: apiURL.data.rating,
+          description: apiURL.data.description_raw,
+          platforms: apiURL.data.platforms.map((p) => p.platform.name), //array de plataformas
+          genres: apiURL.data.genres && apiURL.data.genres.map((g) => g.name).join(', '),
+        }];
+
+  return extraido;
+}
 
 module.exports = {
 	getApiVideogames,
 	getInfoDatabase,
 	getAllVideogames,
   getAllGenres,
-  getAllPlataforms
+  getAllPlataforms,
+  getVideogamesById
 };
