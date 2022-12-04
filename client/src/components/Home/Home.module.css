@@ -12,7 +12,7 @@
 .nav{
     display: flex;
     justify-content:space-around;
-    vertical-align: middle;
+    align-content: center;
     background-color: #995d99;
     width: 100%;
 }
@@ -67,6 +67,7 @@
 
   .ordenfiltro{
     display: flex;
+ 
     justify-content: center;
     flex-direction: column;
     margin-bottom: 1%;

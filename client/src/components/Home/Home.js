@@ -57,14 +57,17 @@ export default function Home() {
     setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`)
   }
+  function handleLoad(e){
+    dispatch(getAllVideogames())
+  }
 
   return (
     <div className={Styles.body}>
 {/* ************* NAVBAR**************************** */}      
       <div className={Styles.nav}>
 
-        <div className={Styles.ordenfiltro}><Link to="/"><h1 className={Styles.linknav}>Inicio 🏠</h1></Link></div>
-        <div className={Styles.ordenfiltro}><h1 className={Styles.linknav}>Recargar 🔅</h1></div>
+        <div className={Styles.ordenfiltro}><Link to="/"><button className={Styles.linknav}>Inicio 🏠</button></Link></div>
+        <div className={Styles.ordenfiltro}><button className={Styles.linknav} onClick={(e) =>{handleLoad(e)}}>Recargar 🔅</button></div>
         <div className={Styles.ordenfiltro}><SearchBar /></div>
       </div>
 {/* ************* ------**************************** */} 
