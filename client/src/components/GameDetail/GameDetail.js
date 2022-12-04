@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetail } from '../../actions';
+import { getDetail, cleanDetail } from '../../actions';
 import Styles from "./detail.module.css"
 
 export default function Detail(props){
@@ -12,6 +12,12 @@ useEffect(() =>{
   dispatch(getDetail(props.match.params.id))
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [dispatch]);
+
+useEffect(() => {
+  return function () {
+      dispatch(cleanDetail())
+  }
+},[dispatch])
 
 // El id del creado esta como string
 

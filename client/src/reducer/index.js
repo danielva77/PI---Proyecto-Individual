@@ -9,7 +9,8 @@ import{
     GET_GENRES,
     POST_VIDEOGAMES,
     GET_PLATFORMS,
-    GET_DETAIL
+    GET_DETAIL,
+    CLEAN_DETAIL
 } from "../actions/index";
 
 const initialState = {
@@ -111,6 +112,11 @@ export default function rootReducer(state=initialState, action){
       return {
           ...state,
           detail: action.payload,
+      }
+    case CLEAN_DETAIL:
+      return{
+          ...state,
+          detail: []
       }
 
           default:

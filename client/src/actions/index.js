@@ -11,6 +11,7 @@ export const GET_GENRES = "GET_GENRES";
 export const POST_VIDEOGAMES = "POST_VIDEOGAMES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const GET_DETAIL = "GET_DETAIL";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
 //----------------------------------------------------
 
 export function getAllVideogames(){
@@ -111,5 +112,11 @@ export const getDetail = (id) => {
           type: GET_DETAIL,
           payload: response.data
       })
+  }
+}
+
+export function cleanDetail(){
+  return{
+      type: 'CLEAN_DETAIL'
   }
 }
