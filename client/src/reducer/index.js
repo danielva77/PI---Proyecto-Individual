@@ -46,7 +46,6 @@ export default function rootReducer(state=initialState, action){
       }else{
         createdFilter = allVideogames2.filter(e => (e.id.toString().length<10))
       }
-      console.log("quiero ver",createdFilter )
       return{
         ...state,
         videogames: createdFilter
