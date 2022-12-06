@@ -6,6 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGenre, getPlatform, postVideogame } from "../../actions";
 import Styles from "./Create.module.css";
 
+function validate(input){
+  let errors = {}
+  if(!input.name) errors.name = "Ingrese un nombre"
+  if(!input.description) errors.description = "El juego debe tener una descripción"
+  if(!input.rating || input.rating < 1 || input.rating > 5) errors.rating = "El rating debe ser entre 1 a 5"
+  if(!input.released) errors.released = "Debe tener fecha de lanzamiento"
+  if(!input.platforms.length) errors.platforms = "Ingrese las plataformas del videojuego"
+  if(!input.genres.length) errors.genres = "Ingrese llos generos del videojuego" 
+  return errors;
+}
+
+
+
 export default function CreateVideogame(){
     const dispatch = useDispatch();
     const genres = useSelector(state => state.genres);
@@ -22,6 +35,8 @@ export default function CreateVideogame(){
         genres : []
     });
 
+    const [errors, setErrors] = useState({})
+
 
     useEffect(() =>{
         dispatch(getGenre())
@@ -37,6 +52,11 @@ export default function CreateVideogame(){
 
 //******Funciones************
 function handleChange(e){
+  setErrors(validate({
+    ...input,
+    [e.target.name]: e.target.value
+  }))
+
   setInput({
     ...input,
     [e.target.name] : e.target.value,
@@ -135,9 +155,6 @@ function handleDelete(el){
               )}
             )}
           </select>
-          {/* <div>
-            <ul><li>{input.genres.map(e => e+" ,")}</li></ul>
-          </div> */}
           </div>
 
           <div>
