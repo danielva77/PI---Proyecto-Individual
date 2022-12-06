@@ -26,10 +26,10 @@ export default function CreateVideogame(){
     const history = useHistory()
 
     const [input, setInput] = useState({
-        name : " ",
-        description : " ",
-        released : " ",
-        image : " ",
+        name : "",
+        description : "",
+        released : "",
+        image : "",
         rating : 0,
         platforms : [], 
         genres : []
@@ -43,24 +43,24 @@ export default function CreateVideogame(){
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
-        useEffect(() =>{
-          dispatch(getPlatform())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() =>{
+      dispatch(getPlatform())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
-        const platform = useSelector(state => state.platforms);
+
+    const platform = useSelector(state => state.platforms);
 
 
 //******Funciones************
 function handleChange(e){
-  setErrors(validate({
-    ...input,
-    [e.target.name]: e.target.value
-  }))
-
   setInput({
     ...input,
     [e.target.name] : e.target.value,
   })
+  setErrors(validate({
+    ...input,
+    [e.target.name]: e.target.value
+  }))
 }
 
 function handleCheck(e){
@@ -70,6 +70,11 @@ function handleCheck(e){
       platforms: [...input.platforms, e.target.value]
     })
   }
+  setErrors(validate({
+    ...input,
+    platforms: e.target.value
+  }))
+  
 }
 
 function handleSelect(e){
@@ -77,11 +82,21 @@ function handleSelect(e){
     ...input,
     genres: [...input.genres, e.target.value]
   })
+  setErrors(validate({
+    ...input,
+    genres: e.target.value
+  }))
 }
 
 function handleSubmit(e){
   e.preventDefault();
   console.log(input);
+
+  setErrors(validate(input))
+  const errorSubmit = validate(input)
+  if(Object.values(errorSubmit).length !== 0){
+      alert('Datos faltantes')
+  }else{
   dispatch(postVideogame(input));
   alert("Juego cargado con éxito");
   setInput({
@@ -93,7 +108,7 @@ function handleSubmit(e){
     platforms : [], 
     genres : []
   });
-  history.push("/Home");
+  history.push("/Home");}
 } 
 
 function handleDelete(el){
@@ -118,33 +133,39 @@ function handleDelete(el){
         <div>
           <div>
           <label>Nombre:</label>
-          <input type="text" value={input.name} name="name" onChange={(e) =>{handleChange(e)}}/>
+          <input type="text" placeholder="Nombre..." value={input.name} name="name" onChange={(e) =>{handleChange(e)}}/>
+                {errors.name && (<p className={Styles.textError}>{errors.name}</p>)}
           </div>
 
           <div>
           <label>Descripción:</label>
-          <input type="text" value={input.description} name="description" onChange={(e) =>{handleChange(e)}}/>
+          <input type="text" placeholder="Descripcion..." value={input.description} name="description" onChange={(e) =>{handleChange(e)}}/>
+            {errors.description && (<p className={Styles.textError}>{errors.description}</p>)}
           </div>
 
           <div>
           <label>Publicado:</label>
-          <input type="text" value={input.released} name="released" onChange={(e) =>{handleChange(e)}}/>
+          <input type="text" placeholder="Fecha tipo dd/mm/aaaa" value={input.released} name="released" onChange={(e) =>{handleChange(e)}}/>
+            {errors.released && (<p className={Styles.textError}>{errors.released}</p>)}
           </div>
 
           <div>
           <label>Imagen:</label>
-          <input type="text" value={input.image} name="image" onChange={(e) =>{handleChange(e)}}/>
+          <input type="text" placeholder="Inserte URL imagen" value={input.image} name="image" onChange={(e) =>{handleChange(e)}}/>
+
           </div>
 
           <div>
           <label>Rating:</label>
-          <input type="number" value={input.rating} name="rating" onChange={(e) =>{handleChange(e)}}/>
+          <input type="number"  value={input.rating} name="rating" onChange={(e) =>{handleChange(e)}}/>
+            {errors.rating && (<p className={Styles.textError}>{errors.rating}</p>)}
           </div>
 
           <label>Plataforma:</label>
           {platform.map((e) =>{
             return(<label><input type="checkbox" name={e.name} value={e.name} onChange={(e) =>{handleCheck(e)}}/>{e.name}</label>)
           })}
+            {errors.platforms && (<p className={Styles.textError}>{errors.platforms}</p>)}
 
           <div>
           <label>Generos:</label>
@@ -155,7 +176,16 @@ function handleDelete(el){
               )}
             )}
           </select>
+          {errors.genres && (<p className={Styles.textError}>{errors.genres}</p>)}
           </div>
+          {
+            input.genres.map(el => 
+              <div>
+                <button onClick={e =>{handleDelete(el)}}>x</button>
+                <p>{el}</p>
+
+              </div>)
+          }
 
           <div>
             <button type="submit" onClick={(e) =>{handleSubmit(e)}}>Cargar</button>
@@ -166,14 +196,14 @@ function handleDelete(el){
           
         </div>
       </form>
-          {
+          {/* {
             input.genres.map(el => 
               <div>
                 <button onClick={e =>{handleDelete(el)}}>x</button>
                 <p>{el}</p>
 
               </div>)
-          }
+          } */}
 
 
 
