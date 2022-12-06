@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail, cleanDetail } from '../../actions';
-import Styles from "./detail.module.css"
+import Styles from "./detail.module.css";
 
 export default function Detail(props){
 

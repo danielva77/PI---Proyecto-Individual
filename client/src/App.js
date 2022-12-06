@@ -14,9 +14,6 @@ function App() {
       <Route path="/videogames" component={CreateVideogame}/>
       <Route path="/videogame/:id" component={Detail}/>
     </Switch>
-    <div className="App">
-      {/* <h1>Henry Videogames</h1> */}
-    </div>
     </BrowserRouter>
   );
 }
