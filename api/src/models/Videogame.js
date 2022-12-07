@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Videogame', {
     id: {
-        type: DataTypes.UUID, //porque UUID
+        type: DataTypes.UUID, 
         defaultValue:DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true
@@ -28,6 +28,6 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER
       },
   },
-  { timestamps: false } //Utilidad
+  { timestamps: false } 
   );
 };

@@ -6,8 +6,7 @@ const {
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+
 router.get("/", async(req , res) =>{
     let TodosLosGeneros = await getAllGenres()
     res.status(200).send(TodosLosGeneros)

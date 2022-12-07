@@ -15,3 +15,4 @@ router.use('/videogames', videogamesRoute);
 router.use('/platforms', platformRoute);
 
 module.exports = router;
+

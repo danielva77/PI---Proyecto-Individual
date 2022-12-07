@@ -15,7 +15,7 @@ const router = Router();
 router.get("/:id", async(req , res) =>{
     // res.send("Soy el get /videogame")
     const {id} = req.params;
-    // const allVideogames = await getAllVideogames();
+   
     console.log("numero", id.toString().length);
     if(id.toString().length<10){
       var allVideogamesbyId = await getVideogamesById(id);

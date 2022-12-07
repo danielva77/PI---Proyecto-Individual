@@ -38,15 +38,8 @@ router.post("/", async(req , res) =>{
         released, 
         image, 
         rating
-       // createdInDb: true,
-        //id: uuidv4()
     });
 
-    // let generodb = await Genero.findAll({
-    //   where: {name: genres}
-    // });
-    // gameCreated.addGenero(generodb);
-    // console.log(generodb)
     if (genres.length) {
       genres.map(async genre => {
           let g = await Genero.findOrCreate({
@@ -57,11 +50,6 @@ router.post("/", async(req , res) =>{
           //console.log(g[0])
       })
   }
-
-    // let platformdb = await Plataform.findAll({
-    //   where: {name: platform}
-    // });
-    // gameCreated.addPlataform(platformdb);
     if (platforms.length) {
       platforms.map(async platform => {
           let p = await Plataform.findOrCreate({
