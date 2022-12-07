@@ -31,12 +31,6 @@ export default function Home() {
   }, [dispatch]);
 
 
-  // FUNCION QUE TRAE TODOS LOS JUEGOS AL HACER CLICK
-  // function handleClick(e){
-  //   e.preventDefault();
-  //   dispatch(getAllVideogames());
-  // };
-
   function handleFilterByGenre(e){
     e.preventDefault();
     if(e.target.value === 'all') {
@@ -82,8 +76,9 @@ export default function Home() {
       <div className={Styles.newgame}>
       <Link to="/videogames">⭐ Carga tu propio Juego ⭐</Link>
       </div>
-      {/* <div>
-      <button onClick={e =>{handleClick(e)}}>Volver a cargar todo</button></div> */}
+
+
+
 {/* ************* PAGINADO **************************** */}
       <div className={Styles.paginado}>
         <Paginado 
