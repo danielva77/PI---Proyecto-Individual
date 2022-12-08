@@ -79,6 +79,8 @@
     margin-top: 1.5%;
     color: white;
     text-decoration: none;
+    background-size: cover;
+    background-repeat: no-repeat
   }
 /* Link, Link:visited{
   color: white;

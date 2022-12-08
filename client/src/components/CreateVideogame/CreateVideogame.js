@@ -63,6 +63,9 @@ function handleChange(e){
   }))
 }
 
+// function handleImagen(e)
+
+
 function handleCheck(e){
   if(e.target.checked){
     setInput({
@@ -78,10 +81,15 @@ function handleCheck(e){
 }
 
 function handleSelect(e){
-  setInput({
-    ...input,
-    genres: [...input.genres, e.target.value]
-  })
+
+  if(input.genres.includes(e.target.value)){
+    alert("ya existe ese genero")
+  }else{
+    setInput({
+      ...input,
+      genres: [...input.genres, e.target.value]
+    })
+  }
   setErrors(validate({
     ...input,
     genres: e.target.value
@@ -112,6 +120,7 @@ function handleSubmit(e){
 } 
 
 function handleDelete(el){
+
   setInput({
     ...input,
     genres: input.genres.filter(g => g !==el)

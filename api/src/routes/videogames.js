@@ -34,7 +34,7 @@ router.post("/", async(req , res) =>{
         name, 
         description,
         released, 
-        image, 
+        image: image? image : "https://play-lh.googleusercontent.com/PJTpDSrMNqy5ngECw1w0KdBRuOdgJQGnC8TXiAAF3uFBqZuRpELfruyFgzGw9-hmoLc9", 
         rating
     });
 
@@ -43,7 +43,6 @@ router.post("/", async(req , res) =>{
           let g = await Genero.findOrCreate({
               where: { name: genre }
           })
-
           gameCreated.addGenero(g[0])
           //console.log(g[0])
       })
@@ -53,14 +52,11 @@ router.post("/", async(req , res) =>{
           let p = await Plataform.findOrCreate({
               where: { name: platform }
           })
-
           gameCreated.addPlataform(p[0]);
           console.log(p[0])
       })
   }
-
-
-    res.status(200).send("Videogames created succesfully")
+  res.status(200).send("Videogames created succesfully")
 })
 
 

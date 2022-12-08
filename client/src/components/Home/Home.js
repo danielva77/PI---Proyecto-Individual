@@ -1,7 +1,6 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-//import { GET_ALL_VIDEOGAMES } from "../../actions";
 import { Link } from "react-router-dom";
 import { getAllVideogames, filterVideogamesByGenre, filterCreated, OrderByName, OrderByRating } from "../../actions";
 import Card from "../Card/Card";
