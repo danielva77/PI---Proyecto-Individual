@@ -76,20 +76,6 @@ export default function Home() {
       <Link to="/videogames">⭐ Carga tu propio Juego ⭐</Link>
       </div>
 
-
-
-{/* ************* PAGINADO **************************** */}
-      <div className={Styles.paginado}>
-        <Paginado 
-        videogamesPerPage = {videogamesPerPage}
-        allVideogames = {allVideogames.length}
-        paginado = {paginado}
-        />
-        <div><p>Page -{currentPage}-</p></div>
-      </div>
-{/* ************* -------- **************************** */}
-
-
 {/* ************* FILTROS Y ORDEN **************************** */}
       <div className={Styles.filtros}>
         <div className={Styles.ordenfiltro}>
@@ -142,6 +128,17 @@ export default function Home() {
         </div>
       </div>
 {/* ************* ----------------**************************** */}
+{/* ************* PAGINADO **************************** */}
+<div className={Styles.paginado}>
+        <Paginado 
+        videogamesPerPage = {videogamesPerPage}
+        allVideogames = {allVideogames.length}
+        paginado = {paginado}
+        />
+      </div>
+
+{/* ************* -------- **************************** */}
+      <div className={Styles.newgame}><p>Page -{currentPage}-</p></div>
       <div  className={Styles.container}>
         {
           currentVideogames.length === 0 ? (
