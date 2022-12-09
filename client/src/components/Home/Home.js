@@ -85,6 +85,7 @@ export default function Home() {
         allVideogames = {allVideogames.length}
         paginado = {paginado}
         />
+        <div><p>Page -{currentPage}-</p></div>
       </div>
 {/* ************* -------- **************************** */}
 
