@@ -129,93 +129,89 @@ function handleDelete(el){
 //***************************
   
   return(
-    <div className={Styles.container}>
-      <div>
-      <Link to="/Home">
-        <button>Volver</button>
-      </Link>
+    <div className={Styles.containercreate}>
+      <div className={Styles.containerimage}>
+        <img src="https://images.pexels.com/photos/7773986/pexels-photo-7773986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className={Styles.imagecreate} alt="Image" />
       </div>
-
-      <div><h1>Cargá tu videogame!</h1></div>
-
-      <form>
+      <div>
         <div>
-          <div>
-          <label>Nombre:</label>
-          <input type="text" placeholder="Nombre..." value={input.name} name="name" onChange={(e) =>{handleChange(e)}}/>
-                {errors.name && (<p className={Styles.textError}>{errors.name}</p>)}
-          </div>
-
-          <div>
-          <label>Descripción:</label>
-          <input type="text" placeholder="Descripcion..." value={input.description} name="description" onChange={(e) =>{handleChange(e)}}/>
-            {errors.description && (<p className={Styles.textError}>{errors.description}</p>)}
-          </div>
-
-          <div>
-          <label>Publicado:</label>
-          <input type="text" placeholder="Fecha tipo dd/mm/aaaa" value={input.released} name="released" onChange={(e) =>{handleChange(e)}}/>
-            {errors.released && (<p className={Styles.textError}>{errors.released}</p>)}
-          </div>
-
-          <div>
-          <label>Imagen:</label>
-          <input type="text" placeholder="Inserte URL imagen" value={input.image} name="image" onChange={(e) =>{handleChange(e)}}/>
-
-          </div>
-
-          <div>
-          <label>Rating:</label>
-          <input type="number"  value={input.rating} name="rating" onChange={(e) =>{handleChange(e)}}/>
-            {errors.rating && (<p className={Styles.textError}>{errors.rating}</p>)}
-          </div>
-
-          <label>Plataforma:</label>
-          {platform.map((e) =>{
-            return(<label><input type="checkbox" name={e.name} value={e.name} onChange={(e) =>{handleCheck(e)}}/>{e.name}</label>)
-          })}
-            {errors.platforms && (<p className={Styles.textError}>{errors.platforms}</p>)}
-
-          <div>
-          <label>Generos:</label>
-          <select onChange={(e) =>{handleSelect(e)}}>
-            {genres.map((genero) =>
-              {return(
-                <option value={genero.name} name={genero.name}>{genero.name}</option>
-              )}
-            )}
-          </select>
-          {errors.genres && (<p className={Styles.textError}>{errors.genres}</p>)}
-          </div>
-          {
-            input.genres.map(el => 
-              <div>
-                <button onClick={e =>{handleDelete(el)}}>x</button>
-                <p>{el}</p>
-
-              </div>)
-          }
-
-          <div>
-            <button type="submit" onClick={(e) =>{handleSubmit(e)}}>Cargar</button>
-              <Link to="/Home">
-              <button>Cancelar</button>
-              </Link>
-          </div>
-          
+        <Link to="/Home">
+          <button>Volver 🔙</button>
+        </Link>
         </div>
-      </form>
-          {/* {
-            input.genres.map(el => 
-              <div>
-                <button onClick={e =>{handleDelete(el)}}>x</button>
-                <p>{el}</p>
 
-              </div>)
-          } */}
+        <div><h1>Cargá tu videogame!</h1></div>
 
+        <form>
+          <div>
+            <div>
+            {/* <label>Nombre:</label> */}
+            <input className={Styles.input} type="text" placeholder="Nombre..." value={input.name} name="name" onChange={(e) =>{handleChange(e)}}/>
+                  {errors.name && (<p className={Styles.textError}>{errors.name}</p>)}
+            </div>
 
+            <div>
+            {/* <label>Descripción:</label> */}
+            <input className={Styles.input} type="text" placeholder="Descripcion..." value={input.description} name="description" onChange={(e) =>{handleChange(e)}}/>
+              {errors.description && (<p className={Styles.textError}>{errors.description}</p>)}
+            </div>
 
+            <div>
+            {/* <label>Publicado:</label> */}
+            <input className={Styles.input} type="text" placeholder="Fecha tipo dd/mm/aaaa" value={input.released} name="released" onChange={(e) =>{handleChange(e)}}/>
+              {errors.released && (<p className={Styles.textError}>{errors.released}</p>)}
+            </div>
+
+            <div>
+            {/* <label>Imagen:</label> */}
+            <input className={Styles.input} type="text" placeholder="Inserte URL imagen" value={input.image} name="image" onChange={(e) =>{handleChange(e)}}/>
+
+            </div>
+
+            <div>
+            {/* <label>Rating:</label> */}
+            <input className={Styles.input} type="number" placeholder="Rating de 1 a 5" value={input.rating} name="rating" onChange={(e) =>{handleChange(e)}}/>
+              {errors.rating && (<p className={Styles.textError}>{errors.rating}</p>)}
+            </div>
+
+            {/* <label>Plataforma:</label> */}
+            <div className={Styles.plataformas}>
+            {platform.map((e) =>{
+              return(<label><input type="checkbox" name={e.name} value={e.name} onChange={(e) =>{handleCheck(e)}}/>{e.name}</label>)
+            })}
+            </div>
+              {errors.platforms && (<p className={Styles.textError}>{errors.platforms}</p>)}
+
+            <div>
+            {/* <label>Generos:</label> */}
+            <select className={Styles.input} onChange={(e) =>{handleSelect(e)}}>
+              {genres.map((genero) =>
+                {return(
+                  <option value={genero.name} name={genero.name}>{genero.name}</option>
+                )}
+              )}
+            </select>
+            {errors.genres && (<p className={Styles.textError}>{errors.genres}</p>)}
+            </div>
+            {
+              input.genres.map(el => 
+                <div>
+                  <button onClick={e =>{handleDelete(el)}}>x</button>
+                  <p>{el}</p>
+
+                </div>)
+            }
+
+            <div>
+              <button type="submit" onClick={(e) =>{handleSubmit(e)}}>⭕ Cargar</button>
+                <Link to="/Home">
+                <button>Cancelar ❌</button>
+                </Link>
+            </div>
+            
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

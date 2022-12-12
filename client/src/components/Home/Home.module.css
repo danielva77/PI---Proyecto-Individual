@@ -13,7 +13,7 @@
     display: flex;
     justify-content:space-around;
     align-content: center;
-    background-color: #995d99;
+    background-color: #78288C;
     width: 100%;
 }
 .linknav{
@@ -23,14 +23,12 @@
 }
 
 .card{
-    /*background-color: gray;*/
     width: 275px;
     height: auto;
     color: white;
     text-decoration: none;
     border-radius: 2%;
     background-image: url("./fondodecard.jpeg");
-    /* background-color: aqua; */
     margin: 5%;
     transition: 0.5s;
   }
@@ -41,6 +39,7 @@
   img{
     width: 250px;
     height: 250px;
+    border-radius: 2%;
   }
   .container{
     display: flex;
@@ -82,8 +81,22 @@
     background-size: cover;
     background-repeat: no-repeat
   }
-/* Link, Link:visited{
-  color: white;
-  text-decoration: none;
-  background-color: aqua;
-} */
+  .pagetext{
+    font-size: x-small;
+  }
+
+  button{
+    background-color: #e7e7e7; 
+    color: black; /* Green */
+    border: none;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+  }
+  button:hover{
+    background-color: yellow;
+    cursor: pointer;
+  }

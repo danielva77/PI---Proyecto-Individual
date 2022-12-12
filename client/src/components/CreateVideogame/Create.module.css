@@ -10,3 +10,30 @@
 .landing{
     background-size: cover;
 }
+.containercreate{
+    display: flex;
+    flex-direction: row;
+}
+.containerimage{
+    width: 500px;
+}
+.imagecreate{
+    width: 330px;
+    height: max-content;
+    border-radius: 0%;
+}
+.input{
+    background-color: #e7e7e7; 
+    color: black; /* Green */
+    border: none;
+    padding: 5px 12px;
+    text-align: center;
+    width: 500px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+}
+.plataformas{
+    width: 600px;
+}

@@ -70,11 +70,13 @@ export default function Home() {
         <div className={Styles.ordenfiltro}><Link to="/"><button className={Styles.linknav}>Inicio 🏠</button></Link></div>
         <div className={Styles.ordenfiltro}><button className={Styles.linknav} onClick={(e) =>{handleLoad(e)}}>Recargar 🔅</button></div>
         <div className={Styles.ordenfiltro}><SearchBar /></div>
+        <div className={Styles.ordenfiltro}><Link to="/videogames">⭐ Agregar videojuego ⭐</Link></div>
       </div>
+      
 {/* ************* ------**************************** */} 
-      <div className={Styles.newgame}>
+      {/* <div className={Styles.newgame}>
       <Link to="/videogames">⭐ Carga tu propio Juego ⭐</Link>
-      </div>
+      </div> */}
 
 {/* ************* FILTROS Y ORDEN **************************** */}
       <div className={Styles.filtros}>
@@ -138,7 +140,7 @@ export default function Home() {
       </div>
 
 {/* ************* -------- **************************** */}
-      <div className={Styles.newgame}><p>Page -{currentPage}-</p></div>
+      <div className={Styles.newgame}><p className={Styles.pagetext}>Page -{currentPage}-</p></div>
       <div  className={Styles.container}>
         {
           currentVideogames.length === 0 ? (
