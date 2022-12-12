@@ -13,10 +13,9 @@ export default function Paginado({videogamesPerPage, allVideogames, paginado}){
         {
           pageNumbers && 
           pageNumbers.map(number => {return(
-           
           
             <button className={Styles.button} key={number} onClick={() => paginado(number)}>{number}</button>
-           
+          
           )})
         }
       </ul>
