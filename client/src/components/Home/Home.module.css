@@ -111,6 +111,9 @@
   text-decoration: none;
   background-color: #dddb7373; 
 }
+.Addvideogame:hover{
+  background-color: black;
+}
 .filtersformat{
   background-color: #e7e7e7; 
   color: black; /* Green */
