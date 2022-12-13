@@ -70,19 +70,16 @@ export default function Home() {
         <div className={Styles.ordenfiltro}><Link to="/"><button className={Styles.linknav}>Inicio 🏠</button></Link></div>
         <div className={Styles.ordenfiltro}><button className={Styles.linknav} onClick={(e) =>{handleLoad(e)}}>Recargar 🔅</button></div>
         <div className={Styles.ordenfiltro}><SearchBar /></div>
-        <div className={Styles.ordenfiltro}><Link to="/videogames">⭐ Agregar videojuego ⭐</Link></div>
+        <div className={Styles.ordenfiltro}><Link className={Styles.Addvideogame} to="/videogames"><strong className={Styles.Addvideogame} >⭐ Agregar videojuego ⭐</strong></Link></div>
       </div>
       
 {/* ************* ------**************************** */} 
-      {/* <div className={Styles.newgame}>
-      <Link to="/videogames">⭐ Carga tu propio Juego ⭐</Link>
-      </div> */}
 
 {/* ************* FILTROS Y ORDEN **************************** */}
       <div className={Styles.filtros}>
         <div className={Styles.ordenfiltro}>
-          <p>Filtrar por Genero</p>
-          <select onChange={e =>{handleFilterByGenre(e)}}>
+          <p><strong>Filtrar por Genero</strong></p>
+          <select className={Styles.filtersformat} onChange={e =>{handleFilterByGenre(e)}}>
             <option value="all">Todos</option>
             <option value="Action">Accion</option>
             <option value="Adventure">Aventura</option>
@@ -105,24 +102,24 @@ export default function Home() {
           </select>
         </div>
         <div className={Styles.ordenfiltro}>
-          <p>Filtrar por tipo</p>
-          <select onChange={e =>{handleFilterCreated(e)}}> Filtrar
+          <p><strong>Filtrar por tipo</strong></p>
+          <select className={Styles.filtersformat} onChange={e =>{handleFilterCreated(e)}}> Filtrar
             <option value="all">Todos</option>
             <option value="existente">Existentes</option>
             <option value="creado">Creados</option>
           </select>
         </div>
         <div className={Styles.ordenfiltro}>
-          <p>Ordenar por nombre</p>
-          <select onChange={e =>{handleSort(e)}}> 
+          <p><strong>Ordenar por nombre</strong></p>
+          <select className={Styles.filtersformat} onChange={e =>{handleSort(e)}}> 
             <option disabled selected>Ordenar por nombre</option>
             <option value="ascendente">Ascendente A-Z</option>
             <option value="descendente">Descendente Z-A</option>
           </select>
         </div>
         <div className={Styles.ordenfiltro}>
-          <p>Ordenar por rating</p>
-          <select onChange={e =>{handleSortRating(e)}}> 
+          <p><strong>Ordenar por rating</strong></p>
+          <select className={Styles.filtersformat} onChange={e =>{handleSortRating(e)}}> 
             <option disabled selected>Ordenar por rating</option>
             <option value="mayor">Menor rating</option>
             <option value="menor">Mayor rating</option>
@@ -138,9 +135,10 @@ export default function Home() {
         paginado = {paginado}
         />
       </div>
+<div className={Styles.pagenumber}><p className={Styles.pagetext}>Page -{currentPage}-</p></div>
 
 {/* ************* -------- **************************** */}
-      <div className={Styles.newgame}><p className={Styles.pagetext}>Page -{currentPage}-</p></div>
+
       <div  className={Styles.container}>
         {
           currentVideogames.length === 0 ? (
@@ -151,7 +149,7 @@ export default function Home() {
     
           return( 
             <div>
-              <Link to={"/videogame/"+el.id}>
+              <Link className={Styles.Addvideogame} to={"/videogame/"+el.id}>
                 <div>
                   <div className={Styles.card}>
                     <Card 

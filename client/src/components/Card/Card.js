@@ -3,7 +3,7 @@ import Style from "../Card/Card.module.css";
 
 export default function Card(props){
   return (
-    <Link to={'/videogame/'+props.id}>
+    <Link className={Style.AddCard} to={'/videogame/'+props.id}>
       <div>
         
       <h3 className={Style.text}>{props.name}</h3>

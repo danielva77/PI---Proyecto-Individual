@@ -61,7 +61,7 @@
     background-image: url("https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=600");
     display: flex;
     justify-content:space-around;
-    margin: 2%;
+    margin: 1%;
   }
 
   .ordenfiltro{
@@ -81,8 +81,13 @@
     background-size: cover;
     background-repeat: no-repeat
   }
+  .pagenumber{
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
   .pagetext{
-    font-size: x-small;
+    font-size: small;
   }
 
   button{
@@ -100,3 +105,23 @@
     background-color: yellow;
     cursor: pointer;
   }
+
+.Addvideogame{
+  color: white;
+  text-decoration: none;
+  background-color: #dddb7373; 
+}
+.filtersformat{
+  background-color: #e7e7e7; 
+  color: black; /* Green */
+  border: none;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.filtersformat:hover{
+  cursor: pointer;
+  background-color: black;
+}

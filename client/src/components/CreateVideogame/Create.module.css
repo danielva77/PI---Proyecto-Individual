@@ -1,3 +1,6 @@
+html, body{
+    background-color: black;
+}
 .container{
     background-color: black;
 }
@@ -16,10 +19,13 @@
 }
 .containerimage{
     width: 500px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 .imagecreate{
-    width: 330px;
-    height: max-content;
+    width: 450px;
+    height: 600px;
     border-radius: 0%;
 }
 .input{

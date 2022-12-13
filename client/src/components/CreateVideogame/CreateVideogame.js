@@ -131,7 +131,7 @@ function handleDelete(el){
   return(
     <div className={Styles.containercreate}>
       <div className={Styles.containerimage}>
-        <img src="https://images.pexels.com/photos/7773986/pexels-photo-7773986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className={Styles.imagecreate} alt="Image" />
+        <img src="https://media1.giphy.com/media/3oriOiizS4Pmofj46A/giphy.gif?cid=790b76117a7b803856fe5ed48d9d48f2d7c5bf5631964e59&rid=giphy.gif&ct=g" className={Styles.imagecreate} alt="Image" />
       </div>
       <div>
         <div>
